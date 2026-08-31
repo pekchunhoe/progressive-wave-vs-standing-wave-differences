@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+  >
+
+  <meta
+    name="description"
+    content="Interactive simulation comparing progressive waves and standing waves."
+  >
+
+  <title>Progressive Wave vs Standing Wave</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =========================================================
+       PAGE HEADER
+       ========================================================= -->
+
+  <header class="page-header">
+
+    <h1>Progressive Wave vs Standing Wave</h1>
+
+    <p class="subtitle">
+      Interactive comparison of particle motion, amplitude, phase and energy transfer
+    </p>
+
+  </header>
+
+
+  <!-- =========================================================
+       MAIN CONTENT
+       ========================================================= -->
+
+  <main class="main-container">
+
+
+    <!-- =======================================================
+         KEY LEARNING IDEA
+         ======================================================= -->
+
+    <section class="key-idea">
+
+      <h2>Key Difference</h2>
+
+      <div class="key-grid">
+
+        <div class="key-card progressive-key">
+
+          <div class="key-title">
+            Progressive Wave
+          </div>
+
+          <div class="key-formula">
+            Same amplitude
+            <span>+</span>
+            Different phase
+          </div>
+
+          <div class="key-description">
+            The wave profile travels through the medium and transfers energy.
+          </div>
+
+        </div>
+
+
+        <div class="key-card standing-key">
+
+          <div class="key-title">
+            Standing Wave
+          </div>
+
+          <div class="key-formula">
+            Different amplitudes
+            <span>+</span>
+            Same phase*
+          </div>
+
+          <div class="key-description">
+            The wave profile remains stationary and there is no net energy
+            transmission along the string.
+          </div>
+
+          <div class="key-note">
+            *Particles between two adjacent nodes vibrate in phase.
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         SIMULATION AREA
+         ======================================================= -->
+
+    <section class="simulation-section">
+
+      <div class="section-heading">
+
+        <h2>Interactive Wave Simulation</h2>
+
+        <p>
+          Watch the motion of many medium particles and compare the
+          highlighted green and red particles.
+        </p>
+
+      </div>
+
+
+      <div class="simulation-grid">
+
+
+        <!-- ===================================================
+             PROGRESSIVE WAVE
+             =================================================== -->
+
+        <article
+          class="simulation-card progressive-card"
+          id="progressivePanel"
+        >
+
+          <div class="simulation-header">
+
+            <div>
+
+              <h3>Progressive Wave</h3>
+
+              <p class="wave-equation">
+                y = A sin(ωt − kx)
+              </p>
+
+            </div>
+
+            <span class="wave-badge">
+              TRAVELLING
+            </span>
+
+          </div>
+
+
+          <!-- Canvas -->
+
+          <div
+            class="canvas-container"
+            id="progressiveCanvasContainer"
+          >
+
+            <canvas
+              id="progressiveCanvas"
+              aria-label="Progressive wave simulation"
+            ></canvas>
+
+          </div>
+
+
+          <!-- Wave status -->
+
+          <div class="wave-status">
+
+            <div class="status-item">
+
+              <span class="status-label">
+                Wave profile
+              </span>
+
+              <strong>
+                Moving →
+              </strong>
+
+            </div>
+
+            <div class="status-item">
+
+              <span class="status-label">
+                Particle amplitude
+              </span>
+
+              <strong>
+                Same
+              </strong>
+
+            </div>
+
+            <div class="status-item">
+
+              <span class="status-label">
+                Particle phase
+              </span>
+
+              <strong>
+                Different
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <!-- Highlighted particles -->
+
+          <div class="particle-comparison">
+
+            <h4>Highlighted Adjacent Particles</h4>
+
+            <div class="particle-info-grid">
+
+
+              <div class="particle-info green-particle">
+
+                <div class="particle-title">
+
+                  <span class="particle-dot green-dot"></span>
+
+                  Green Particle A
+
+                </div>
+
+                <div class="particle-values">
+
+                  <div>
+                    <span>x</span>
+                    <strong id="progressiveGreenX">—</strong>
+                  </div>
+
+                  <div>
+                    <span>y</span>
+                    <strong id="progressiveGreenY">—</strong>
+                  </div>
+
+                  <div>
+                    <span>Amplitude</span>
+                    <strong id="progressiveGreenAmplitude">A</strong>
+                  </div>
+
+                  <div>
+                    <span>Motion</span>
+                    <strong id="progressiveGreenMotion">—</strong>
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="particle-info red-particle">
+
+                <div class="particle-title">
+
+                  <span class="particle-dot red-dot"></span>
+
+                  Red Particle B
+
+                </div>
+
+                <div class="particle-values">
+
+                  <div>
+                    <span>x</span>
+                    <strong id="progressiveRedX">—</strong>
+                  </div>
+
+                  <div>
+                    <span>y</span>
+                    <strong id="progressiveRedY">—</strong>
+                  </div>
+
+                  <div>
+                    <span>Amplitude</span>
+                    <strong id="progressiveRedAmplitude">A</strong>
+                  </div>
+
+                  <div>
+                    <span>Motion</span>
+                    <strong id="progressiveRedMotion">—</strong>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="phase-result progressive-result">
+
+              <strong>Observation:</strong>
+
+              <span>
+                Same amplitude, different phase.
+              </span>
+
+              <span id="progressivePhaseDifference">
+                Δφ = —
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- Progressive controls -->
+
+          <div class="controls">
+
+            <div class="main-controls">
+
+              <button
+                type="button"
+                id="progressivePlay"
+                class="control-button play-button"
+              >
+                ▶ Play
+              </button>
+
+              <button
+                type="button"
+                id="progressivePause"
+                class="control-button"
+              >
+                ⏸ Pause
+              </button>
+
+              <button
+                type="button"
+                id="progressiveReset"
+                class="control-button reset-button"
+              >
+                ↻ Reset
+              </button>
+
+            </div>
+
+
+            <div class="slider-controls">
+
+              <label>
+
+                <span>
+                  Speed
+                </span>
+
+                <input
+                  type="range"
+                  id="progressiveSpeed"
+                  min="0.1"
+                  max="3"
+                  step="0.1"
+                  value="1"
+                >
+
+                <output id="progressiveSpeedValue">
+                  1.0×
+                </output>
+
+              </label>
+
+
+              <label>
+
+                <span>
+                  Amplitude
+                </span>
+
+                <input
+                  type="range"
+                  id="progressiveAmplitude"
+                  min="10"
+                  max="80"
+                  step="1"
+                  value="40"
+                >
+
+                <output id="progressiveAmplitudeValue">
+                  40
+                </output>
+
+              </label>
+
+
+              <label>
+
+                <span>
+                  Frequency
+                </span>
+
+                <input
+                  type="range"
+                  id="progressiveFrequency"
+                  min="0.2"
+                  max="3"
+                  step="0.1"
+                  value="1"
+                >
+
+                <output id="progressiveFrequencyValue">
+                  1.0 Hz
+                </output>
+
+              </label>
+
+
+              <label>
+
+                <span>
+                  Wavelength
+                </span>
+
+                <input
+                  type="range"
+                  id="progressiveWavelength"
+                  min="100"
+                  max="500"
+                  step="10"
+                  value="260"
+                >
+
+                <output id="progressiveWavelengthValue">
+                  260
+                </output>
+
+              </label>
+
+            </div>
+
+          </div>
+
+
+          <!-- Progressive options -->
+
+          <div class="options">
+
+            <label class="checkbox-label">
+
+              <input
+                type="checkbox"
+                id="progressivePhaseToggle"
+              >
+
+              <span>
+                Show particle phase
+              </span>
+
+            </label>
+
+
+            <label class="checkbox-label">
+
+              <input
+                type="checkbox"
+                id="progressiveEnergyToggle"
+              >
+
+              <span>
+                Show energy transfer
+              </span>
+
+            </label>
+
+          </div>
+
+
+          <div
+            class="time-display"
+            id="progressiveTime"
+          >
+            t = 0.00 s
+          </div>
+
+        </article>
+
+
+
+        <!-- ===================================================
+             STANDING WAVE
+             =================================================== -->
+
+        <article
+          class="simulation-card standing-card"
+          id="standingPanel"
+        >
+
+          <div class="simulation-header">
+
+            <div>
+
+              <h3>Standing Wave</h3>
+
+              <p class="wave-equation">
+                y = 2A cos(kx) sin(ωt)
+              </p>
+
+            </div>
+
+            <span class="wave-badge">
+              STATIONARY
+            </span>
+
+          </div>
+
+
+          <!-- Canvas -->
+
+          <div
+            class="canvas-container"
+            id="standingCanvasContainer"
+          >
+
+            <canvas
+              id="standingCanvas"
+              aria-label="Standing wave simulation"
+            ></canvas>
+
+          </div>
+
+
+          <!-- Wave status -->
+
+          <div class="wave-status">
+
+            <div class="status-item">
+
+              <span class="status-label">
+                Wave profile
+              </span>
+
+              <strong>
+                Stationary
+              </strong>
+
+            </div>
+
+            <div class="status-item">
+
+              <span class="status-label">
+                Particle amplitude
+              </span>
+
+              <strong>
+                Different
+              </strong>
+
+            </div>
+
+            <div class="status-item">
+
+              <span class="status-label">
+                Particle phase
+              </span>
+
+              <strong>
+                Same*
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <!-- Highlighted particles -->
+
+          <div class="particle-comparison">
+
+            <h4>Highlighted Adjacent Particles</h4>
+
+            <div class="particle-info-grid">
+
+
+              <div class="particle-info green-particle">
+
+                <div class="particle-title">
+
+                  <span class="particle-dot green-dot"></span>
+
+                  Green Particle A
+
+                </div>
+
+                <div class="particle-values">
+
+                  <div>
+                    <span>x</span>
+                    <strong id="standingGreenX">—</strong>
+                  </div>
+
+                  <div>
+                    <span>y</span>
+                    <strong id="standingGreenY">—</strong>
+                  </div>
+
+                  <div>
+                    <span>Amplitude</span>
+                    <strong id="standingGreenAmplitude">—</strong>
+                  </div>
+
+                  <div>
+                    <span>Motion</span>
+                    <strong id="standingGreenMotion">—</strong>
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="particle-info red-particle">
+
+                <div class="particle-title">
+
+                  <span class="particle-dot red-dot"></span>
+
+                  Red Particle B
+
+                </div>
+
+                <div class="particle-values">
+
+                  <div>
+                    <span>x</span>
+                    <strong id="standingRedX">—</strong>
+                  </div>
+
+                  <div>
+                    <span>y</span>
+                    <strong id="standingRedY">—</strong>
+                  </div>
+
+                  <div>
+                    <span>Amplitude</span>
+                    <strong id="standingRedAmplitude">—</strong>
+                  </div>
+
+                  <div>
+                    <span>Motion</span>
+                    <strong id="standingRedMotion">—</strong>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="phase-result standing-result">
+
+              <strong>Observation:</strong>
+
+              <span>
+                Different amplitudes, same phase between adjacent nodes.
+              </span>
+
+              <span id="standingPhaseDifference">
+                Δφ = 0
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- Standing controls -->
+
+          <div class="controls">
+
+            <div class="main-controls">
+
+              <button
+                type="button"
+                id="standingPlay"
+                class="control-button play-button"
+              >
+                ▶ Play
+              </button>
+
+              <button
+                type="button"
+                id="standingPause"
+                class="control-button"
+              >
+                ⏸ Pause
+              </button>
+
+              <button
+                type="button"
+                id="standingReset"
+                class="control-button reset-button"
+              >
+                ↻ Reset
+              </button>
+
+            </div>
+
+
+            <div class="slider-controls">
+
+              <label>
+
+                <span>
+                  Speed
+                </span>
+
+                <input
+                  type="range"
+                  id="standingSpeed"
+                  min="0.1"
+                  max="3"
+                  step="0.1"
+                  value="1"
+                >
+
+                <output id="standingSpeedValue">
+                  1.0×
+                </output>
+
+              </label>
+
+
+              <label>
+
+                <span>
+                  Amplitude
+                </span>
+
+                <input
+                  type="range"
+                  id="standingAmplitude"
+                  min="10"
+                  max="80"
+                  step="1"
+                  value="40"
+                >
+
+                <output id="standingAmplitudeValue">
+                  40
+                </output>
+
+              </label>
+
+
+              <label>
+
+                <span>
+                  Frequency
+                </span>
+
+                <input
+                  type="range"
+                  id="standingFrequency"
+                  min="0.2"
+                  max="3"
+                  step="0.1"
+                  value="1"
+                >
+
+                <output id="standingFrequencyValue">
+                  1.0 Hz
+                </output>
+
+              </label>
+
+
+              <label>
+
+                <span>
+                  Wavelength
+                </span>
+
+                <input
+                  type="range"
+                  id="standingWavelength"
+                  min="100"
+                  max="500"
+                  step="10"
+                  value="260"
+                >
+
+                <output id="standingWavelengthValue">
+                  260
+                </output>
+
+              </label>
+
+            </div>
+
+          </div>
+
+
+          <!-- Standing options -->
+
+          <div class="options">
+
+            <label class="checkbox-label">
+
+              <input
+                type="checkbox"
+                id="standingNodesToggle"
+              >
+
+              <span>
+                Show nodes & antinodes
+              </span>
+
+            </label>
+
+
+            <label class="checkbox-label">
+
+              <input
+                type="checkbox"
+                id="standingPhaseToggle"
+              >
+
+              <span>
+                Show particle phase
+              </span>
+
+            </label>
+
+
+            <label class="checkbox-label">
+
+              <input
+                type="checkbox"
+                id="standingEnergyToggle"
+              >
+
+              <span>
+                Show energy information
+              </span>
+
+            </label>
+
+          </div>
+
+
+          <div
+            class="time-display"
+            id="standingTime"
+          >
+            t = 0.00 s
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         DIRECT COMPARISON
+         ======================================================= -->
+
+    <section class="comparison-section">
+
+      <h2>Progressive Wave vs Standing Wave</h2>
+
+      <div class="comparison-table-wrapper">
+
+        <table class="comparison-table">
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Property
+              </th>
+
+              <th>
+                Progressive Wave
+              </th>
+
+              <th>
+                Standing Wave
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr>
+
+              <th>
+                Wave profile
+              </th>
+
+              <td>
+                Moves through the medium
+              </td>
+
+              <td>
+                Does not move
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <th>
+                Particle amplitude
+              </th>
+
+              <td>
+                Same amplitude
+              </td>
+
+              <td>
+                Different amplitudes
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <th>
+                Neighbouring particles
+              </th>
+
+              <td>
+                Different phases
+              </td>
+
+              <td>
+                Particles between adjacent nodes vibrate in phase
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <th>
+                Nodes
+              </th>
+
+              <td>
+                No fixed nodes
+              </td>
+
+              <td>
+                Fixed nodes occur
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <th>
+                Antinodes
+              </th>
+
+              <td>
+                No fixed antinodes
+              </td>
+
+              <td>
+                Fixed antinodes occur
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <th>
+                Particle vibration
+              </th>
+
+              <td>
+                All particles vibrate
+              </td>
+
+              <td>
+                Particles at nodes do not vibrate
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <th>
+                Energy
+              </th>
+
+              <td>
+                Energy is transmitted
+              </td>
+
+              <td>
+                No net energy transmission along the string
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <th>
+                Formation
+              </th>
+
+              <td>
+                Produced by a disturbance travelling through a medium
+              </td>
+
+              <td>
+                Produced by superposition of two waves travelling in opposite directions
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         PARTICLE MOTION COMPARISON
+         ======================================================= -->
+
+    <section class="highlight-section">
+
+      <h2>Watch the Two Highlighted Particles</h2>
+
+      <p class="section-intro">
+        The green and red particles provide a direct way to compare
+        particle motion in the two types of waves.
+      </p>
+
+
+      <div class="highlight-grid">
+
+
+        <div class="highlight-card">
+
+          <div class="highlight-icon">
+
+            <span class="large-dot green-dot"></span>
+
+            <span class="large-dot red-dot"></span>
+
+          </div>
+
+          <h3>Progressive Wave</h3>
+
+          <div class="highlight-statement">
+            Same amplitude
+          </div>
+
+          <div class="highlight-statement">
+            Different phase
+          </div>
+
+          <p>
+            The green and red particles do not reach their maximum
+            displacement or equilibrium position at exactly the same time.
+          </p>
+
+        </div>
+
+
+        <div class="highlight-card">
+
+          <div class="highlight-icon">
+
+            <span class="large-dot green-dot"></span>
+
+            <span class="large-dot red-dot"></span>
+
+          </div>
+
+          <h3>Standing Wave</h3>
+
+          <div class="highlight-statement">
+            Different amplitudes
+          </div>
+
+          <div class="highlight-statement">
+            Same phase*
+          </div>
+
+          <p>
+            The green and red particles move upward together and
+            downward together when they are between the same two nodes.
+          </p>
+
+          <small>
+            *Particles between adjacent nodes vibrate in phase.
+          </small>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         PHYSICS RELATIONSHIP
+         ======================================================= -->
+
+    <section class="education-section">
+
+      <button
+        type="button"
+        class="accordion-button"
+        id="physicsRelationshipButton"
+        aria-expanded="false"
+        aria-controls="physicsRelationshipContent"
+      >
+
+        <span>
+          Physics Relationship
+        </span>
+
+        <span class="accordion-icon">
+          +
+        </span>
+
+      </button>
+
+
+      <div
+        class="accordion-content"
+        id="physicsRelationshipContent"
+        hidden
+      >
+
+        <div class="formula-block">
+
+          <h3>Progressive Wave</h3>
+
+          <p class="formula">
+            y = A sin(ωt − kx)
+          </p>
+
+          <p>
+            The displacement depends on both time and position.
+            Therefore, different particles along the medium have
+            different phases.
+          </p>
+
+        </div>
+
+
+        <div class="formula-block">
+
+          <h3>Two Opposite Travelling Waves</h3>
+
+          <p class="formula">
+            y₁ = A sin(ωt − kx)
+          </p>
+
+          <p class="formula">
+            y₂ = A sin(ωt + kx)
+          </p>
+
+        </div>
+
+
+        <div class="formula-block">
+
+          <h3>Standing Wave</h3>
+
+          <p class="formula">
+            y = y₁ + y₂
+          </p>
+
+          <p class="formula">
+            y = 2A cos(kx) sin(ωt)
+          </p>
+
+          <p>
+            The wave profile remains stationary. The amplitude depends
+            on position, producing nodes and antinodes.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         LEARNING OBJECTIVES
+         ======================================================= -->
+
+    <section class="education-section">
+
+      <button
+        type="button"
+        class="accordion-button"
+        id="learningObjectiveButton"
+        aria-expanded="false"
+        aria-controls="learningObjectiveContent"
+      >
+
+        <span>
+          Learning Objectives
+        </span>
+
+        <span class="accordion-icon">
+          +
+        </span>
+
+      </button>
+
+
+      <div
+        class="accordion-content"
+        id="learningObjectiveContent"
+        hidden
+      >
+
+        <ul class="learning-list">
+
+          <li>
+            Distinguish between progressive and standing waves.
+          </li>
+
+          <li>
+            Explain the difference in particle amplitude.
+          </li>
+
+          <li>
+            Explain the difference in phase between particles.
+          </li>
+
+          <li>
+            Identify nodes and antinodes in a standing wave.
+          </li>
+
+          <li>
+            Explain why particles at nodes do not vibrate.
+          </li>
+
+          <li>
+            Understand that progressive waves transmit energy.
+          </li>
+
+          <li>
+            Understand that a standing wave has no net energy
+            transmission along the string.
+          </li>
+
+          <li>
+            Relate the mathematical wave equations to the observed
+            particle motion.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         OBSERVATION SUMMARY
+         ======================================================= -->
+
+    <section class="summary-section">
+
+      <h2>Quick Observation</h2>
+
+      <div class="summary-grid">
+
+        <div class="summary-item">
+
+          <span class="summary-number">
+            1
+          </span>
+
+          <div>
+
+            <strong>
+              Progressive Wave
+            </strong>
+
+            <p>
+              Wave profile moves → energy is transferred.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="summary-item">
+
+          <span class="summary-number">
+            2
+          </span>
+
+          <div>
+
+            <strong>
+              Standing Wave
+            </strong>
+
+            <p>
+              Wave profile stays → no net energy transmission.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="summary-item">
+
+          <span class="summary-number">
+            3
+          </span>
+
+          <div>
+
+            <strong>
+              Progressive Wave
+            </strong>
+
+            <p>
+              Same amplitude but different phases.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="summary-item">
+
+          <span class="summary-number">
+            4
+          </span>
+
+          <div>
+
+            <strong>
+              Standing Wave
+            </strong>
+
+            <p>
+              Different amplitudes but same phase between adjacent nodes.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+
+  <footer class="page-footer">
+
+    <p>
+      Interactive Physics Simulation
+    </p>
+
+    <p>
+      Progressive Waves &amp; Standing Waves
+    </p>
+
+  </footer>
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+       ========================================================= -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>
