@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
 
@@ -17,6 +18,7 @@
 
   <link rel="stylesheet" href="style.css">
 </head>
+
 
 <body>
 
@@ -179,6 +181,7 @@
 
             </div>
 
+
             <div class="status-item">
 
               <span class="status-label">
@@ -190,6 +193,7 @@
               </strong>
 
             </div>
+
 
             <div class="status-item">
 
@@ -210,10 +214,12 @@
 
           <div class="particle-comparison">
 
-            <h4>Highlighted Adjacent Particles</h4>
+            <h4>Highlighted Particles</h4>
 
             <div class="particle-info-grid">
 
+
+              <!-- Green particle -->
 
               <div class="particle-info green-particle">
 
@@ -224,6 +230,7 @@
                   Green Particle A
 
                 </div>
+
 
                 <div class="particle-values">
 
@@ -252,6 +259,8 @@
               </div>
 
 
+              <!-- Red particle -->
+
               <div class="particle-info red-particle">
 
                 <div class="particle-title">
@@ -261,6 +270,7 @@
                   Red Particle B
 
                 </div>
+
 
                 <div class="particle-values">
 
@@ -322,6 +332,7 @@
                 ▶ Play
               </button>
 
+
               <button
                 type="button"
                 id="progressivePause"
@@ -329,6 +340,7 @@
               >
                 ⏸ Pause
               </button>
+
 
               <button
                 type="button"
@@ -341,29 +353,12 @@
             </div>
 
 
+            <!-- NO SPEED CONTROL -->
+
             <div class="slider-controls">
 
-              <label>
 
-                <span>
-                  Speed
-                </span>
-
-                <input
-                  type="range"
-                  id="progressiveSpeed"
-                  min="0.1"
-                  max="3"
-                  step="0.1"
-                  value="1"
-                >
-
-                <output id="progressiveSpeedValue">
-                  1.0×
-                </output>
-
-              </label>
-
+              <!-- Amplitude -->
 
               <label>
 
@@ -377,15 +372,17 @@
                   min="10"
                   max="80"
                   step="1"
-                  value="40"
+                  value="45"
                 >
 
                 <output id="progressiveAmplitudeValue">
-                  40
+                  45
                 </output>
 
               </label>
 
+
+              <!-- Frequency -->
 
               <label>
 
@@ -399,15 +396,17 @@
                   min="0.2"
                   max="3"
                   step="0.1"
-                  value="1"
+                  value="0.5"
                 >
 
                 <output id="progressiveFrequencyValue">
-                  1.0 Hz
+                  0.5 Hz
                 </output>
 
               </label>
 
+
+              <!-- Wavelength -->
 
               <label>
 
@@ -479,7 +478,6 @@
         </article>
 
 
-
         <!-- ===================================================
              STANDING WAVE
              =================================================== -->
@@ -539,6 +537,7 @@
 
             </div>
 
+
             <div class="status-item">
 
               <span class="status-label">
@@ -550,6 +549,7 @@
               </strong>
 
             </div>
+
 
             <div class="status-item">
 
@@ -570,10 +570,12 @@
 
           <div class="particle-comparison">
 
-            <h4>Highlighted Adjacent Particles</h4>
+            <h4>Highlighted Particles</h4>
 
             <div class="particle-info-grid">
 
+
+              <!-- Green particle -->
 
               <div class="particle-info green-particle">
 
@@ -584,6 +586,7 @@
                   Green Particle A
 
                 </div>
+
 
                 <div class="particle-values">
 
@@ -612,6 +615,8 @@
               </div>
 
 
+              <!-- Red particle -->
+
               <div class="particle-info red-particle">
 
                 <div class="particle-title">
@@ -621,6 +626,7 @@
                   Red Particle B
 
                 </div>
+
 
                 <div class="particle-values">
 
@@ -682,6 +688,7 @@
                 ▶ Play
               </button>
 
+
               <button
                 type="button"
                 id="standingPause"
@@ -689,6 +696,7 @@
               >
                 ⏸ Pause
               </button>
+
 
               <button
                 type="button"
@@ -701,29 +709,12 @@
             </div>
 
 
+            <!-- NO SPEED CONTROL -->
+
             <div class="slider-controls">
 
-              <label>
 
-                <span>
-                  Speed
-                </span>
-
-                <input
-                  type="range"
-                  id="standingSpeed"
-                  min="0.1"
-                  max="3"
-                  step="0.1"
-                  value="1"
-                >
-
-                <output id="standingSpeedValue">
-                  1.0×
-                </output>
-
-              </label>
-
+              <!-- Amplitude -->
 
               <label>
 
@@ -737,15 +728,17 @@
                   min="10"
                   max="80"
                   step="1"
-                  value="40"
+                  value="45"
                 >
 
                 <output id="standingAmplitudeValue">
-                  40
+                  45
                 </output>
 
               </label>
 
+
+              <!-- Frequency -->
 
               <label>
 
@@ -759,15 +752,17 @@
                   min="0.2"
                   max="3"
                   step="0.1"
-                  value="1"
+                  value="0.5"
                 >
 
                 <output id="standingFrequencyValue">
-                  1.0 Hz
+                  0.5 Hz
                 </output>
 
               </label>
 
+
+              <!-- Wavelength -->
 
               <label>
 
@@ -857,7 +852,6 @@
     </section>
 
 
-
     <!-- =======================================================
          DIRECT COMPARISON
          ======================================================= -->
@@ -874,29 +868,22 @@
 
             <tr>
 
-              <th>
-                Property
-              </th>
+              <th>Property</th>
 
-              <th>
-                Progressive Wave
-              </th>
+              <th>Progressive Wave</th>
 
-              <th>
-                Standing Wave
-              </th>
+              <th>Standing Wave</th>
 
             </tr>
 
           </thead>
 
+
           <tbody>
 
             <tr>
 
-              <th>
-                Wave profile
-              </th>
+              <th>Wave profile</th>
 
               <td>
                 Moves through the medium
@@ -911,9 +898,7 @@
 
             <tr>
 
-              <th>
-                Particle amplitude
-              </th>
+              <th>Particle amplitude</th>
 
               <td>
                 Same amplitude
@@ -928,9 +913,7 @@
 
             <tr>
 
-              <th>
-                Neighbouring particles
-              </th>
+              <th>Neighbouring particles</th>
 
               <td>
                 Different phases
@@ -945,9 +928,7 @@
 
             <tr>
 
-              <th>
-                Nodes
-              </th>
+              <th>Nodes</th>
 
               <td>
                 No fixed nodes
@@ -962,9 +943,7 @@
 
             <tr>
 
-              <th>
-                Antinodes
-              </th>
+              <th>Antinodes</th>
 
               <td>
                 No fixed antinodes
@@ -979,9 +958,7 @@
 
             <tr>
 
-              <th>
-                Particle vibration
-              </th>
+              <th>Particle vibration</th>
 
               <td>
                 All particles vibrate
@@ -996,9 +973,7 @@
 
             <tr>
 
-              <th>
-                Energy
-              </th>
+              <th>Energy</th>
 
               <td>
                 Energy is transmitted
@@ -1013,9 +988,7 @@
 
             <tr>
 
-              <th>
-                Formation
-              </th>
+              <th>Formation</th>
 
               <td>
                 Produced by a disturbance travelling through a medium
@@ -1036,7 +1009,6 @@
     </section>
 
 
-
     <!-- =======================================================
          PARTICLE MOTION COMPARISON
          ======================================================= -->
@@ -1053,6 +1025,8 @@
 
       <div class="highlight-grid">
 
+
+        <!-- Progressive -->
 
         <div class="highlight-card">
 
@@ -1081,6 +1055,8 @@
 
         </div>
 
+
+        <!-- Standing -->
 
         <div class="highlight-card">
 
@@ -1116,7 +1092,6 @@
       </div>
 
     </section>
-
 
 
     <!-- =======================================================
@@ -1206,7 +1181,6 @@
     </section>
 
 
-
     <!-- =======================================================
          LEARNING OBJECTIVES
          ======================================================= -->
@@ -1281,7 +1255,6 @@
     </section>
 
 
-
     <!-- =======================================================
          OBSERVATION SUMMARY
          ======================================================= -->
@@ -1291,6 +1264,7 @@
       <h2>Quick Observation</h2>
 
       <div class="summary-grid">
+
 
         <div class="summary-item">
 
@@ -1378,7 +1352,6 @@
       </div>
 
     </section>
-
 
   </main>
 
